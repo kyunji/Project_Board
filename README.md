@@ -1,14 +1,15 @@
 # Board_Project
 
 ## 회원관리
-### DB table
+### DB table(tb_users)
 1. id(random number)
-2. userName
-3. userId
-4. userPassword
-5. userEmail
-6. userAddDate
-7. userDeleteDate
+2. userName(user_name)
+3. userId(user_id)
+4. userPassword(user_password)
+5. userEmail(user_email)
+6. userAddDate(user_add_date)
+7. userDeleteDate(user_delete_date)
+8. userDeleteChk(user_delete_chk)
 
 ### 프로젝트 구성
 main/java <br/>
