@@ -1,7 +1,7 @@
 # Board_Project
 
 ## 회원관리
-### DB table(tb_users)
+### DB Table(tb_users)
 1. id(random number)
 2. userName(user_name)
 3. userId(user_id)
@@ -28,3 +28,14 @@ src/main/resources  <br/>
 2. board
 2-1. signup.html
 2-2. signin.html
+
+## 게시판
+### DB Table(tb_users)
+1. id(random number)
+2. userId(user_id)
+3. Title
+4. Body
+5. textAddDate(write_add_date)
+6. textDeleteDate(write_delete_date)
+7. textDeleteChk(write_delete_chk)
+8. 
