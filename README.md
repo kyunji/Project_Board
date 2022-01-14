@@ -16,11 +16,14 @@ main/java <br/>
 
 1. Controller <br/>
 1-1. UserController.java <br/>
-2. DTO <br/>
-2-1. UserDto.java  <br/>
-3. Mapper <br/>
-3-1. UserMapper.java (I) <br/>
-4. Service <br/>  <br/>
+2. Domain <br/>
+2-1. User.java  <br/>
+3. Repository <br/>
+3-1. UserRepository.java (I) <br/>
+3-1-1) findByName()
+3-1-2) findByEmail()
+3-1-3) findByUserId()
+3-1-4) findByUserPassword()
 
 src/main/resources  <br/>
 1. Mapper
