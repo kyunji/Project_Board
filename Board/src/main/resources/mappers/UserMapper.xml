@@ -30,14 +30,15 @@
         )
     </insert>
 
-    <select id="selectUser" parameterType="String" resultType="UserDTO">
+    <select id="selectUsername" parameterType="String" resultType="UserDTO">
         SELECT
         <include refid="userColumns" />
         FROM
         user_table
         WHERE
-        userid = #{userid}
+        username = #{username}
     </select>
+
 
 
 </mapper>

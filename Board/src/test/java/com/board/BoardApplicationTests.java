@@ -19,5 +19,7 @@ class BoardApplicationTests {
         params.setUserpassword("password");
         params.setUseremail("id@password.com");
         userMapper.insertUser(params);
+
+        System.out.println(userMapper.selectUsername("name").getUsername());
     }
 }

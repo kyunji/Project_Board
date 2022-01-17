@@ -10,7 +10,7 @@ import com.board.domain.UserDTO;
 public interface UserMapper {
 
     public int insertUser(UserDTO params);
-    public UserDTO selectUser(String userid);
+    public UserDTO selectUsername(String userid);
 
 
 }
