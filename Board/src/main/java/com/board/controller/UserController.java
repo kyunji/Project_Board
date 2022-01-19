@@ -2,33 +2,40 @@ package com.board.controller;
 
 import com.board.domain.UserDTO;
 import com.board.mapper.UserMapper;
+import com.board.service.UserService;
+import lombok.NoArgsConstructor;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import static java.time.LocalDateTime.now;
+import java.time.LocalDateTime;
 
 @RestController // JSON 형태의 객체 return
+@NoArgsConstructor //생성자 주입 방법
 public class UserController {
-
-    @Autowired
+    private UserService userService;
     private UserMapper userMapper;
-
+    //회원가입
     @PutMapping("/signup")
-    public UserDTO insertUser(@RequestBody UserDTO requestDto) {
-        UserDTO params = new UserDTO();
-        params.setUserid(requestDto.getUserid());
-        params.setUsername(requestDto.getUsername());
-        params.setUserpassword(requestDto.getUserpassword());
-        params.setUseremail(requestDto.getUseremail());
-        params.setSignupTime(now().toString());
-        userMapper.insertUser(params);
-        System.out.println(params);
-        //System.out.println(userMapper.selectUsername("name").getUsername());
-
-        return params;
+    public void signupUser(@RequestBody UserDTO requestDto) {
+        userService.signupService(requestDto);
     }
 }
+
+//jsp
+/* @Controller
+public class UserController {
+    @RequestMapping("/")
+    public String home() {
+        return "index";
+    }
+}
+ */
+
+
+
+
+
+
+
+

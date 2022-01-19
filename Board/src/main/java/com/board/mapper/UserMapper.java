@@ -9,7 +9,7 @@ import com.board.domain.UserDTO;
 @Mapper
 public interface UserMapper {
 
-    public int insertUser(UserDTO params);
+    public void insertUser(UserDTO user);
     public UserDTO selectUsername(String userid);
 
 
