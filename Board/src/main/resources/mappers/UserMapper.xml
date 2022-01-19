@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- BoardMapper(interface)의 경로 지정 -->
+<mapper namespace="com.board.mapper.UserMapper">
+    <!-- 전체 column을 SQL 조각으로 정의해서 사용
+         DB에는 스네이크 케이스 사용 but Java에선 카멜 케이스 사용
+         ->  mybatis 설정(application.properties)에 map-underscore-to-comel-case 작성 -->
+    <sql id="userColumns">
+        idx
+        , userid
+		, userpassword
+		, username
+		, useremail
+		, signup_time
+    </sql>
+    <!-- parameterType: 쿼리 실행에 필요한 parameter 타입 지정
+         resultType: 쿼리 실행 결과를 매핑할 타입
+         #{}: 전달받은 parameter 값-->
+    <insert id="insertUser" parameterType="UserDTO">
+        INSERT INTO user_table (
+        <include refid="userColumns" />
+        ) VALUES (
+        #{idx}
+        , #{userid}
+        , #{userpassword}
+        , #{username}
+        , #{useremail}
+        , NOW()
+        )
+    </insert>
+
+    <select id="selectUsername" parameterType="String" resultType="UserDTO">
+        SELECT
+        <include refid="userColumns" />
+        FROM
+        user_table
+        WHERE
+        username = #{username}
+    </select>
+
+
+
+</mapper>
