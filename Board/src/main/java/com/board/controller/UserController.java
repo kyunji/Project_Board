@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 import java.time.LocalDateTime;
 
 @RestController // JSON 형태의 객체 return
-@NoArgsConstructor //생성자 주입 방법
+//@NoArgsConstructor //생성자 주입 방법
 public class UserController {
+    @Autowired
     private UserService userService;
-    private UserMapper userMapper;
     //회원가입
     @PutMapping("/signup")
     public void signupUser(@RequestBody UserDTO requestDto) {
