@@ -2,7 +2,7 @@
 
 ## 회원관리
 ### DB Table(user_table)
-1. id
+1. idx
 2. userid
 3. userpassword
 4. username
@@ -31,6 +31,12 @@ src/main/resources  <br/>
 2-1. signup.html
 2-2. signin.html <br/> <br/>
 
+### 페이지 구성
+1. / : home
+2. /login : login 페이지
+3. /user : user만 접근할 수 있는 페이지 (로그인 성공)
+ 
+
 ## 게시판
 ### DB Table()
 1. id(random number)
@@ -40,4 +46,3 @@ src/main/resources  <br/>
 5. textAddDate(write_add_date)
 6. textDeleteDate(write_delete_date)
 7. textDeleteChk(write_delete_chk)
-8. 
