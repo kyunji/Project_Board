@@ -22,19 +22,19 @@ main/java <br/>
 4. configuration <br/>
 4-1. DBConfiguration.java <br/>
 5. service <br/>
-
+5-1. UserService.java : 회원가입(db insert)
 
 src/main/resources  <br/>
 1. mappers
 1-1. UserMapper.xml : sql 쿼리
 2. board
-2-1. signup.html
-2-2. signin.html <br/> <br/>
 
-### 페이지 구성
+
+### 페이지 구성(vue)
 1. / : home
-2. /login : login 페이지
-3. /user : user만 접근할 수 있는 페이지 (로그인 성공)
+2. /signup: 회원가입 페이지
+3. /login : login 페이지
+4. /user : user만 접근할 수 있는 페이지 (로그인 성공)
  
 
 ## 게시판
