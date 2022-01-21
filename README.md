@@ -38,11 +38,12 @@ src/main/resources  <br/>
  
 
 ## 게시판
-### DB Table()
-1. id(random number)
-2. userId(user_id)
-3. Title
-4. Body
-5. textAddDate(write_add_date)
-6. textDeleteDate(write_delete_date)
-7. textDeleteChk(write_delete_chk)
+### DB Table(board_table)
+1. idx
+2. title
+3. content
+4. writer
+5. delete_chk
+6. insert_time
+7. delete_time
+
