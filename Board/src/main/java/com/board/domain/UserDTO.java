@@ -1,6 +1,9 @@
 package com.board.domain;
 import lombok.*;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 import static java.time.LocalTime.now;
@@ -12,9 +15,14 @@ import static java.time.LocalTime.now;
 @AllArgsConstructor
 public class UserDTO {
     private Long idx;
+    @NotBlank
     private String id;
+    @NotBlank
     private String password;//카멜케이스
+    @NotBlank
     private String name;
+    @NotBlank
+    @Email
     private String email;
     private LocalDateTime signupTime;
 

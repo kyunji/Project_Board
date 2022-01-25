@@ -8,6 +8,7 @@ import com.board.service.UserService;
 import lombok.NoArgsConstructor;
 import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -33,14 +34,14 @@ public class UserController {
 
     //회원가입
     @PutMapping("/signup")
-    public void signup(@RequestBody UserDTO userRequestDto){
+    public void signup(@Validated @RequestBody UserDTO userRequestDto){
             //userService.duplicatedUser(userRequestDto);
             userService.insertUser(userRequestDto);
     }
 
     //로그인
     @PutMapping("/login")
-    public void login(@RequestBody UserDTO userRequestDto){
+    public void login(@Validated @RequestBody UserDTO userRequestDto){
         if(userService.login(userRequestDto)==1){
             System.out.println("login 성공");
         }
