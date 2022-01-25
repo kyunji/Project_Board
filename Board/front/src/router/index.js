@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Signup from '../components/Signup.vue'
+import Board from '../components/Board.vue'
 //import VueRouter from 'vue-router'
 const routes = [
   {
@@ -22,19 +23,18 @@ const routes = [
   },
 
 
-  //추가: Signup page
+  //Signup page
   {
     path: '/signup',
     name: 'Signup',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    
-    
-    //component: () => import(/* webpackChunkName: "about" */ '../components/Signup.vue')
     component:Signup
   },
-
+  //Board page 게시글 작성
+  {
+    path: '/board',
+    name: 'Board',
+    component:Board
+  }
 ]
 
 

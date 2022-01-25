@@ -7,20 +7,20 @@
         idx,
         title,
         content,
-        writer,
+        id,
         delete_chk,
         insert_time,
         delete_time
     </sql>
 
     <insert id="insertBoard" parameterType="BoardDTO">
-        INSERT INTO board_table (
+        INSERT INTO board (
         <include refid="boardColumns" />
         ) VALUES (
         #{idx}
         , #{title}
         , #{content}
-        , #{writer}
+        , #{id}
         , 0
         , NOW()
         , null

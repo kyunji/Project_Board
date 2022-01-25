@@ -17,7 +17,27 @@ public class UserService {
         this.userMapper = userMapper;
     }
 
-    public void signupService(UserDTO requestDto){
-        userMapper.insertUser(requestDto);
+    //회원 등록
+    public int insertUser(UserDTO requestDto){
+        if(userMapper.insertUser(requestDto))
+            return 1;
+        else
+            return 0;
+    }
+    //회원 중복 체크
+    /* public void duplicatedUser(UserDTO user){
+        if(userMapper.findUser(user.getId())!=null)
+            throw new IllegalStateException("이미 존재합니다");
+
+    }*/
+
+    //회원 등록
+    public int login(UserDTO requestDto){
+        //login 성공
+        if(userMapper.findUser(requestDto)!=null)
+            return 1;
+        // 실패
+        else
+            return 0;
     }
 }

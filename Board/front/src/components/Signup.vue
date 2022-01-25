@@ -5,7 +5,7 @@
       <input type="text" v-model="userid" id="userid"> 
   </p>
   <p> userpassword:
-      <input type="text" v-model="userpassword" id="userpassword"> 
+      <input type="password" v-model="userpassword" id="userpassword"> 
   </p>
   <p> username:
       <input type="text" v-model="username" id="username"> 

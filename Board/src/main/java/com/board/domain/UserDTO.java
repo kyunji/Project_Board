@@ -12,17 +12,17 @@ import static java.time.LocalTime.now;
 @AllArgsConstructor
 public class UserDTO {
     private Long idx;
-    private String userid;
-    private String userpassword;
-    private String username;
-    private String useremail;
+    private String id;
+    private String password;//카멜케이스
+    private String name;
+    private String email;
     private LocalDateTime signupTime;
 
-    public UserDTO(String userid, String userpassword, String username, String useremail) {
-        this.userid=userid;
-        this.userpassword=userpassword;
-        this.username=username;
-        this.useremail=useremail;
+    public UserDTO(String id, String password, String name, String email) {
+        this.id=id;
+        this.password=password;
+        this.name=name;
+        this.email=email;
 
     }
 
@@ -30,11 +30,11 @@ public class UserDTO {
     public String toString() {
         return "UserDTO{" +
                 "idx=" + idx +
-                ", userid='" + userid + '\'' +
-                ", userpassword='" + userpassword + '\'' +
-                ", username='" + username + '\'' +
-                ", useremail='" + useremail + '\'' +
-                ", signupTime='" + signupTime + '\'' +
+                ", id='" + id + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
+                ", signupTime=" + signupTime +
                 '}';
     }
 }
