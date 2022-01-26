@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- BoardMapper(interface)의 경로 지정 -->
+<mapper namespace="com.board.mapper.BoardMapper">
+    <sql id="boardColumns">
+        idx,
+        title,
+        content,
+        writer,
+        delete_chk,
+        insert_time,
+        delete_time
+    </sql>
+
+    <insert id="insertBoard" parameterType="BoardDTO">
+        INSERT INTO board_table (
+        <include refid="boardColumns" />
+        ) VALUES (
+        #{idx}
+        , #{title}
+        , #{content}
+        , #{writer}
+        , 0
+        , NOW()
+        , null
+        )
+    </insert>
+
+</mapper>

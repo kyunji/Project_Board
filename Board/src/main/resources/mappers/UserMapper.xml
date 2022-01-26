@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<!-- BoardMapper(interface)의 경로 지정 -->
+<!-- UserMapper(interface)의 경로 지정 -->
 <mapper namespace="com.board.mapper.UserMapper">
     <!-- 전체 column을 SQL 조각으로 정의해서 사용
          DB에는 스네이크 케이스 사용 but Java에선 카멜 케이스 사용
