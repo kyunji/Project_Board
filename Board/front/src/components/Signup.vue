@@ -54,7 +54,15 @@ export default{
                   }) */
                   .then(response => {
                     console.log(response);
-                    alert("SUCCESS");
+                    //spring에서 보낸 status message 읽기
+                    var result=response.data;
+                    console.log(result.message);
+                    var message=result.message;
+                    //회원가입 성공한 경우
+                    if(message.toString()=="Signup SUCCESS"){
+                      alert("SUCCESS");
+                    }
+                    
                   })
                   .catch(e => {
                     console.log('error : ', e)

@@ -15,15 +15,15 @@ public class BoardDTO {
     private Long idx;
     private String title;
     private String content;
-    private String writer;
+    private String id;
     private boolean delete_chk;
     private LocalDateTime insert_time;
     private LocalDateTime delete_time;
 
-    public BoardDTO(String title, String content, String writer) {
+    public BoardDTO(String title, String content, String id) {
         this.title=title;
         this.content=content;
-        this.writer=writer;
+        this.id=id;
 
     }
 
