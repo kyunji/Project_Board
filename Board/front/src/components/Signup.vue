@@ -1,23 +1,24 @@
 <template>
 <div id="App1"> 
- <form v-on:submit="onSubmitForm"> 
+  <!-- .prevent: 원하는 이벤트 외에 다른 이벤트 발생하는 상황 막음. 입력 데이터 전송 후 GET METHOD NOT ALLOWED 에러 발생 차단-->
+ <form v-on:submit.prevent="onSubmitForm"> 
    <p> userid:
-      <input type="text" v-model="userid" id="userid"> 
+      <input type="text" v-model="id" id="id"> 
   </p>
   <p> userpassword:
-      <input type="text" v-model="userpassword" id="userpassword"> 
+      <input type="password" v-model="password" id="password"> 
   </p>
   <p> username:
-      <input type="text" v-model="username" id="username"> 
+      <input type="text" v-model="name" id="name"> 
   </p>
   <p> useremail:
-      <input type="text" v-model="useremail" id="useremail"> 
+      <input type="text" v-model="email" id="email"> 
   </p>
   <button v-on:click="onLoggin"> Signup </button>
-  <p> {{userid}} </p>
-  <p> {{userpassword}} </p>
-  <p> {{username}} </p>
-  <p> {{useremail}} </p>
+  <p> {{id}} </p>
+  <p> {{password}} </p>
+  <p> {{name}} </p>
+  <p> {{email}} </p>
   </form> 
   </div>    
 </template>>
@@ -28,22 +29,19 @@ export default{
     name: "App1",
     data(){
         return{
-            userid:"",
-            userpassword:"",
-            username:"",
-            useremail:""
+            id:"",
+            password:"",
+            name:"",
+            email:""
         };
     },
     methods : {
       onLoggin: function(){
-            
-            //const id = document.getElementById("id");
-            //const pass = document.getElementById("pass");
             var data={
-              userid:this.userid,
-              userpassword:this.userpassword,
-              username:this.username,
-              useremail:this.useremail
+              id:this.id,
+              password:this.password,
+              name:this.name,
+              email:this.email
 
             }
             axios.put('/signup',data)
@@ -56,10 +54,13 @@ export default{
                   }) */
                   .then(response => {
                     console.log(response);
+                    alert("SUCCESS");
                   })
                   .catch(e => {
                     console.log('error : ', e)
+                    alert("ERROR");
                   })
+            
                   }
   }
 }
