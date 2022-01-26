@@ -37,6 +37,8 @@ main/java <br/>
 5. service <br/>
 5-1. UserService.java : 회원가입(db insert)
 5-2. BoardService.java : 게시판 글 작성(db insert)
+6. api <br />
+6-1. ApiResponseMessage: spring -> vue로 상태코드 전송할 때 사용하는 객체
 
 src/main/resources  <br/>
 1. mappers
