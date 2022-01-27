@@ -6,14 +6,13 @@ import com.board.domain.UserDTO;
 import com.board.mapper.UserMapper;
 import com.board.service.BoardService;
 import com.board.service.UserService;
-import lombok.NoArgsConstructor;
-import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
+
 
 
 //vue 포트
@@ -37,13 +36,13 @@ public class UserController {
     //회원가입
     @RequestMapping(value = "/signup", method=RequestMethod.PUT)
     public ResponseEntity<ApiResponseMessage> signup(@Validated @RequestBody UserDTO userRequestDto){
-        System.out.println("=============Signup======== \n");
-        //userService.duplicatedUser(userRequestDto);
+        //1.27
         userService.insertUser(userRequestDto);
-
         //상태코드(회원가입 성공한 경우)
         ApiResponseMessage apiResponseMessage=new ApiResponseMessage("SUCCESS","Signup SUCCESS");
         return new ResponseEntity<ApiResponseMessage>(apiResponseMessage, HttpStatus.OK);
+
+
     }
 
     //로그인
@@ -63,16 +62,6 @@ public class UserController {
 
     }
 }
-
-//jsp
-/* @Controller
-public class UserController {
-    @RequestMapping("/")
-    public String home() {
-        return "index";
-    }
-}
- */
 
 
 

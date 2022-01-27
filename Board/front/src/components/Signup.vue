@@ -65,8 +65,14 @@ export default{
                     
                   })
                   .catch(e => {
-                    console.log('error : ', e)
-                    alert("ERROR");
+                    console.log(e.response);
+                    console.log(e.response.data);
+                    //데이터 형식 어긋남
+                    if(e.response.data=="MethodArgumentNotValidException")
+                      alert("다시 입력해주세요");
+                    // 이미 db에 존재하는 데이터
+                    if(e.response.data=="DuplicateKeyException")
+                      alert("이미 존재하는 데이터입니다");
                   })
             
                   }

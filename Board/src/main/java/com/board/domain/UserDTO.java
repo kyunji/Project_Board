@@ -4,6 +4,7 @@ import lombok.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 
 import static java.time.LocalTime.now;
@@ -16,8 +17,10 @@ import static java.time.LocalTime.now;
 public class UserDTO {
     private Long idx;
     @NotBlank
+    @Size(min=1, max = 20)
     private String id;
     @NotBlank
+    @Size(min=1, max = 20)
     private String password;//카멜케이스
     @NotBlank
     private String name;
