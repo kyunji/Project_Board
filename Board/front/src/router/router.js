@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Hello from '../components/HelloWorld'
-import test from '../components/test'
+import signup from '../components/signup'
+import board from '../components/Board'
 
 Vue.use(Router) //플러그인 등록
 
@@ -9,14 +9,15 @@ export default new Router({
     mode: 'history',
     routes: [
         
+        
         {
-            path: '/Hello',
-            component: Hello
+            path: '/board',
+            component: board
         },
 
         {
-            path: '/test',
-            component: test
+            path: '/signup',
+            component: signup
         }
     ]
 })

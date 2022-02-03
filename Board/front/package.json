@@ -1,9 +1,9 @@
 {
-  "name": "vue_project_0127",
+  "name": "front_0128",
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --port 8082",
+    "serve": "vue-cli-service serve --port 8081",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint"
   },
@@ -12,7 +12,8 @@
     "core-js": "^3.6.5",
     "vue": "^2.6.11",
     "vue-router": "^3.5.3",
-    "vuetify": "^2.4.0"
+    "vuetify": "^2.4.0",
+    "vuetify-dialog": "^2.0.17"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.5.0",
