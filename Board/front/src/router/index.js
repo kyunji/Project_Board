@@ -3,6 +3,8 @@ import Home from '../views/Home.vue'
 import About from '../views/About.vue'
 import Signup from '../components/Signup.vue'
 import Board from '../components/Board.vue'
+//import test from '../components/test.vue'
+
 //import VueRouter from 'vue-router'
 const routes = [
   {
@@ -31,10 +33,11 @@ const routes = [
   },
   //Board page 게시글 작성
   {
-    path: '/board',
+    path: '/Board',
     name: 'Board',
     component:Board
   }
+
 ]
 
 

@@ -1,6 +1,7 @@
 package com.board.service;
 
-import com.board.domain.BoardDTO;
+import com.board.domain.Board;
+import com.board.dto.BoardDTO;
 import com.board.mapper.BoardMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,12 @@ public class BoardService {
     }
 
     public void insertService(BoardDTO boardDTO){
-        boardMapper.insertBoard(boardDTO);
+        Board board=Board.builder()
+                .title(boardDTO.getTitle())
+                .content(boardDTO.getContent())
+//                .id(boardDTO.getId())
+                .build();
+        boardMapper.insertBoard(board);
     };
 
 }

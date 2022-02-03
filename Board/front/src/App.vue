@@ -1,33 +1,88 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link> |
-    <router-link to="/signup">Signup</router-link> |
-    <router-link to="/board">Board</router-link> 
-  </div>
-  <router-view/>
+  <v-app>
+    <v-card
+      color="grey lighten-4"
+      flat
+    >
+      <v-app-bar
+        color="green darken-2"
+        dark
+        dense
+      >
+        <v-app-bar-nav-icon @click="drawer = !drawer" />
+        <v-toolbar-title> Blog </v-toolbar-title>
+        <v-spacer />
+      </v-app-bar>
+    </v-card>
+    <v-navigation-drawer
+      v-model="drawer"
+      absolute
+      temporary
+    >
+      <v-list-item>
+        <v-list-item-avatar>
+          <v-icon>mdi-account</v-icon>
+        </v-list-item-avatar>
+
+        <v-list-item-content>
+          <v-list-item-title>User</v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider />
+
+      <v-list dense>
+        <v-list-item
+          v-for="item in items"
+          :key="item.title"
+          link
+          :to="item.to"
+        >
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title>{{ item.title }}</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+    <v-main>
+    <router-view />
+    </v-main>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+<script>
+export default {
+  name: 'App',
+  data() {
+    return {
+      drawer: false,
+      items: [
+        {
+          title: 'Home',
+          icon: 'mdi-home',
+          to: '/'
+        },
+        {
+          title: 'Signup',
+          icon: 'mdi-account',
+          to: '/signup'
+        },
+        {
+          title: 'Login',
+          icon: 'mdi-lock',
+          to: '/login'
+        },
+        {
+          title: 'Board',
+          icon: 'mdi-pencil',
+          to: '/board'
+        },
+      ]
+    }
+  },
 }
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #1a242e;
-}
-
-
-#nav a.router-link-exact-active {
-  color: #ff8d22;
-}
-</style>
+</script>
