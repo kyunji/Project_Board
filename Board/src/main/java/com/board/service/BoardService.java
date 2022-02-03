@@ -15,7 +15,12 @@ public class BoardService {
     }
 
     public void insertService(Board boardDTO){
-        boardMapper.insertBoard(boardDTO);
+        Board board=Board.builder()
+                .title(boardDTO.getTitle())
+                .content(boardDTO.getContent())
+                .id(boardDTO.getId())
+                .build();
+        boardMapper.insertBoard(board);
     };
 
 }
