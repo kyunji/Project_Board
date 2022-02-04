@@ -38,7 +38,7 @@ public class UserService {
     }*/
 
     //회원 등록
-    public int login(UserDTO requestDto){
+    public User login(UserDTO requestDto){
         User user = User.builder()
                 .id(requestDto.getId())
                 .name(requestDto.getName())
@@ -48,11 +48,11 @@ public class UserService {
 
         //login 성공
         if(userMapper.findUser(user)!=null){
-            System.out.println(userMapper.findUser(user));
-            return 1;
+            User responseUser=userMapper.findUser(user);
+            return responseUser;
         }
         // 실패
         else
-            return 0;
+            return null;
     }
 }

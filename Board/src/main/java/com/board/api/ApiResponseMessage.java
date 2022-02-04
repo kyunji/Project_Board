@@ -1,5 +1,6 @@
 package com.board.api;
 
+import com.board.domain.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,5 +12,6 @@ import lombok.Setter;
 public class ApiResponseMessage {
     private String status;
     private String message;
+    private User data;
 
 }

@@ -39,7 +39,7 @@ public class UserController {
         //1.27
         userService.insertUser(userRequestDto);
         //상태코드(회원가입 성공한 경우)
-        ApiResponseMessage apiResponseMessage=new ApiResponseMessage("SUCCESS","Signup SUCCESS");
+        ApiResponseMessage apiResponseMessage=new ApiResponseMessage("SUCCESS","Signup SUCCESS",null);
         return new ResponseEntity<ApiResponseMessage>(apiResponseMessage, HttpStatus.OK);
 
 
@@ -47,12 +47,16 @@ public class UserController {
 
     //로그인
     @RequestMapping(value = "/login", method=RequestMethod.POST)
-    public void login(@Validated @RequestBody UserDTO userRequestDto){
-        if(userService.login(userRequestDto)==1){
-            System.out.println("login 성공");
+    public ResponseEntity<ApiResponseMessage> login(@Validated @RequestBody UserDTO userRequestDto){
+        try{
+            User responseUser=userService.login(userRequestDto);
+            ApiResponseMessage apiResponseMessage=new ApiResponseMessage("SUCCESS","Login SUCCESS",responseUser);
+            return new ResponseEntity<ApiResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
-        else
-            System.out.println("login 실패");
+        catch (Exception e) {
+            return null;
+
+        }
     }
 
     //게시판
