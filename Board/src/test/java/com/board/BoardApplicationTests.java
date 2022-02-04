@@ -1,6 +1,6 @@
 package com.board;
 
-import com.board.domain.UserDTO;
+import com.board.domain.User;
 import com.board.mapper.UserMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,13 +13,13 @@ class BoardApplicationTests {
     private UserMapper userMapper;
     @Test
     public void insertUser() {
-        UserDTO params = new UserDTO();
+        User params = new User();
         params.setUserid("id");
         params.setUsername("name");
         params.setUserpassword("password");
         params.setUseremail("id@password.com");
         userMapper.insertUser(params);
 
-        System.out.println(userMapper.selectUsername("name").getUsername());
+//        System.out.println(userMapper.selectUsername("name").getUsername());
     }
 }

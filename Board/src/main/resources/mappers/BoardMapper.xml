@@ -13,14 +13,14 @@
         delete_time
     </sql>
 
-    <insert id="insertBoard" parameterType="BoardDTO">
+    <insert id="insertBoard" parameterType="Board">
         INSERT INTO board (
         <include refid="boardColumns" />
         ) VALUES (
         #{idx}
         , #{title}
         , #{content}
-        , #{id}
+        , null
         , 0
         , NOW()
         , null

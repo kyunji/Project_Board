@@ -1,11 +1,10 @@
 package com.board.mapper;
 
-import com.board.domain.BoardDTO;
-import com.board.domain.UserDTO;
+import com.board.domain.Board;
 import org.apache.ibatis.annotations.Mapper;
 
 @Mapper
 public interface BoardMapper {
-    public void insertBoard(BoardDTO boardDTO);
-    public BoardDTO selectUserid(String userid);
+    public void insertBoard(Board board);
+    //public Board selectUserid(String userid);
 }
