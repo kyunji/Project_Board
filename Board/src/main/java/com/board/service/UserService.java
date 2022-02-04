@@ -38,10 +38,19 @@ public class UserService {
     }*/
 
     //회원 등록
-    public int login(User requestDto){
+    public int login(UserDTO requestDto){
+        User user = User.builder()
+                .id(requestDto.getId())
+                .name(requestDto.getName())
+                .email(requestDto.getEmail())
+                .password(requestDto.getPassword())
+                .build();
+
         //login 성공
-        if(userMapper.findUser(requestDto)!=null)
+        if(userMapper.findUser(user)!=null){
+            System.out.println(userMapper.findUser(user));
             return 1;
+        }
         // 실패
         else
             return 0;

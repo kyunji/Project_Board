@@ -12,7 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-
+import javax.validation.Valid;
 
 
 //vue 포트
@@ -47,7 +47,7 @@ public class UserController {
 
     //로그인
     @RequestMapping(value = "/login", method=RequestMethod.POST)
-    public void login(@Validated @RequestBody User userRequestDto){
+    public void login(@Validated @RequestBody UserDTO userRequestDto){
         if(userService.login(userRequestDto)==1){
             System.out.println("login 성공");
         }
@@ -57,7 +57,7 @@ public class UserController {
 
     //게시판
     @RequestMapping(value = "/board", method=RequestMethod.PUT)
-    public void writeBoard(@RequestBody BoardDTO boardRequestDto) {
+    public void writeBoard(@RequestBody @Valid BoardDTO boardRequestDto) {
         boardService.insertService(boardRequestDto);
 
     }

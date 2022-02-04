@@ -22,9 +22,7 @@ public class UserDTO {
     @NotBlank
     @Size(min=1, max = 20)
     private String password;//카멜케이스
-    @NotBlank
     private String name;
-    @NotBlank
     @Email
     private String email;
     private LocalDateTime signupTime;
