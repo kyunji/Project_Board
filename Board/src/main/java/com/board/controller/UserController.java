@@ -1,6 +1,7 @@
 package com.board.controller;
 
-import com.board.api.ApiResponseMessage;
+import com.board.api.BoardResponseMessage;
+import com.board.api.UserResponseMessage;
 import com.board.domain.User;
 import com.board.dto.BoardDTO;
 import com.board.dto.UserDTO;
@@ -12,7 +13,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import javax.validation.Valid;
+import java.util.List;
 
 
 //vue 포트
@@ -35,23 +36,23 @@ public class UserController {
 
     //회원가입   원래는 /signup
     @RequestMapping(value = "/signup", method=RequestMethod.PUT)
-    public ResponseEntity<ApiResponseMessage> signup(@Validated @RequestBody UserDTO userRequestDto){
+    public ResponseEntity<UserResponseMessage> signup(@Validated @RequestBody UserDTO userRequestDto){
         //1.27
         userService.insertUser(userRequestDto);
         //상태코드(회원가입 성공한 경우)
-        ApiResponseMessage apiResponseMessage=new ApiResponseMessage("SUCCESS","Signup SUCCESS",null);
-        return new ResponseEntity<ApiResponseMessage>(apiResponseMessage, HttpStatus.OK);
+        UserResponseMessage apiResponseMessage=new UserResponseMessage("SUCCESS","Signup SUCCESS",null);
+        return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.OK);
 
 
     }
 
     //로그인
     @RequestMapping(value = "/login", method=RequestMethod.POST)
-    public ResponseEntity<ApiResponseMessage> login(@Validated @RequestBody UserDTO userRequestDto){
+    public ResponseEntity<UserResponseMessage> login(@Validated @RequestBody UserDTO userRequestDto){
         try{
             User responseUser=userService.login(userRequestDto);
-            ApiResponseMessage apiResponseMessage=new ApiResponseMessage("SUCCESS","Login SUCCESS",responseUser);
-            return new ResponseEntity<ApiResponseMessage>(apiResponseMessage, HttpStatus.OK);
+            UserResponseMessage apiResponseMessage=new UserResponseMessage("SUCCESS","Login SUCCESS",responseUser);
+            return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
             return null;
@@ -60,11 +61,21 @@ public class UserController {
     }
 
     //게시판
-    @RequestMapping(value = "/board", method=RequestMethod.PUT)
-    public void writeBoard(@RequestBody @Valid BoardDTO boardRequestDto) {
-        boardService.insertService(boardRequestDto);
+    @RequestMapping(value = "/board", method=RequestMethod.GET)
+    public ResponseEntity<BoardResponseMessage> boardList() {
+        List<BoardDTO> boardDTOList=boardService.findBoard();
+        try{
+            BoardResponseMessage apiResponseMessage=new BoardResponseMessage("SUCCESS","Board List SUCCESS",boardDTOList);
+            return new ResponseEntity<BoardResponseMessage>(apiResponseMessage, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return null;
+
+        }
 
     }
+
+
 }
 
 

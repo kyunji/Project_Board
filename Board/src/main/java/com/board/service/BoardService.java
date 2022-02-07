@@ -3,8 +3,15 @@ package com.board.service;
 import com.board.domain.Board;
 import com.board.dto.BoardDTO;
 import com.board.mapper.BoardMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.stream.Collectors;
 
 @Service
 public class BoardService {
@@ -23,5 +30,17 @@ public class BoardService {
                 .build();
         boardMapper.insertBoard(board);
     };
+
+    public List<BoardDTO> findBoard(){
+        ModelMapper modelMapper=new ModelMapper();
+
+        List<Board> boardList= boardMapper.findBoard();
+        List<BoardDTO> boardDTOList=
+                boardList.stream().map(
+                        p-> modelMapper.map(p,BoardDTO.class)).collect(Collectors.toList()
+                );
+
+        return boardDTOList;
+    }
 
 }

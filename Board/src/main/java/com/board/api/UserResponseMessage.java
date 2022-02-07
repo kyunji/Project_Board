@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 //front로 전송할 메세지
-public class ApiResponseMessage {
+public class UserResponseMessage {
     private String status;
     private String message;
     private User data;

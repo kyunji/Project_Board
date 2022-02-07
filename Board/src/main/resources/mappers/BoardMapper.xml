@@ -13,6 +13,13 @@
         delete_time
     </sql>
 
+    <sql id="boardSimpleColumns">
+        title,
+        content,
+        id,
+        insert_time
+    </sql>
+
     <insert id="insertBoard" parameterType="Board">
         INSERT INTO board (
         <include refid="boardColumns" />
@@ -26,5 +33,12 @@
         , null
         )
     </insert>
+
+    <select id="findBoard" resultType="Board">
+        SELECT
+        <include refid="boardColumns" />
+        FROM
+        board
+    </select>
 
 </mapper>
