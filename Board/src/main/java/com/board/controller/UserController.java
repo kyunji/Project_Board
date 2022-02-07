@@ -1,7 +1,9 @@
 package com.board.controller;
 
+import com.board.api.BoardInsertResponseMessage;
 import com.board.api.BoardResponseMessage;
 import com.board.api.UserResponseMessage;
+import com.board.domain.Board;
 import com.board.domain.User;
 import com.board.dto.BoardDTO;
 import com.board.dto.UserDTO;
@@ -67,6 +69,21 @@ public class UserController {
         try{
             BoardResponseMessage apiResponseMessage=new BoardResponseMessage("SUCCESS","Board List SUCCESS",boardDTOList);
             return new ResponseEntity<BoardResponseMessage>(apiResponseMessage, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return null;
+
+        }
+
+    }
+
+    //게시판 글 작성
+    @RequestMapping(value = "/board1", method=RequestMethod.PUT)
+    public ResponseEntity<BoardInsertResponseMessage> boardList(@Validated @RequestBody BoardDTO boardRequestDto) {
+        try{
+            boardService.insertService(boardRequestDto);
+            BoardInsertResponseMessage apiResponseMessage=new BoardInsertResponseMessage("SUCCESS","Board Insert SUCCESS",boardRequestDto);
+            return new ResponseEntity<BoardInsertResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
             return null;
