@@ -53,7 +53,7 @@ public class DBConfiguration {
         //BoardMapper XML에서 parameterType과 resultType은 클래스의 full 패키지 경로가 포함되어야함. 이 설정을 통해서 패키지 경로를 일부 생략할 수 있음.
         factoryBean.setTypeAliasesPackage("com.board.domain");
         //mybatis 설정과 관련된 bean을 설정파일로 지정
-        factoryBean.setConfiguration(mybatisConfg());
+        factoryBean.setConfigLocation(applicationContext.getResource("classpath:mybatis-config.xml"));
         return factoryBean.getObject();
     }
 

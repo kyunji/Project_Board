@@ -14,18 +14,30 @@ public class Board {
     private String title;
     private String content;
     private String id;
-    private boolean delete_chk;
-    private LocalDateTime insert_time;
-    private LocalDateTime delete_time;
+    private boolean deleteChk;
+    private LocalDateTime insertTime;
+    private LocalDateTime deleteTime;
 
     @Builder
-    public Board(String title, String content, String id, boolean delete_chk, LocalDateTime insert_time, LocalDateTime delete_time){
+    public Board(String title, String content, String id, boolean deleteChk, LocalDateTime insertTime, LocalDateTime deleteTime){
         this.title=title;
         this.content=content;
         this.id=id;
-        this.delete_chk=delete_chk;
-        this.insert_time=insert_time;
-        this.delete_time=delete_time;
+        this.deleteChk=deleteChk;
+        this.insertTime=insertTime;
+        this.deleteTime=deleteTime;
     }
 
+    @Override
+    public String toString() {
+        return "Board{" +
+                "idx=" + idx +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", id='" + id + '\'' +
+                ", delete_chk=" + deleteChk +
+                ", insert_time=" + insertTime +
+                ", delete_time=" + deleteTime +
+                '}';
+    }
 }

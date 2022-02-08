@@ -13,13 +13,6 @@
         delete_time
     </sql>
 
-    <sql id="boardSimpleColumns">
-        title,
-        content,
-        id,
-        insert_time
-    </sql>
-
     <insert id="insertBoard" parameterType="Board">
         INSERT INTO board (
         <include refid="boardColumns" />
@@ -27,7 +20,7 @@
         #{idx}
         , #{title}
         , #{content}
-        , null
+        , #{id}
         , 0
         , NOW()
         , null

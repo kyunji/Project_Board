@@ -7,10 +7,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collection;
-import java.util.Iterator;
 import java.util.List;
-import java.util.ListIterator;
 import java.util.stream.Collectors;
 
 @Service
@@ -26,7 +23,9 @@ public class BoardService {
         Board board=Board.builder()
                 .title(boardDTO.getTitle())
                 .content(boardDTO.getContent())
-//                .id(boardDTO.getId())
+                .id(boardDTO.getId())
+                .insertTime(boardDTO.getInsertTime())
+                .deleteTime(boardDTO.getDeleteTime())
                 .build();
         boardMapper.insertBoard(board);
     };
@@ -39,7 +38,9 @@ public class BoardService {
                 boardList.stream().map(
                         p-> modelMapper.map(p,BoardDTO.class)).collect(Collectors.toList()
                 );
-
+        System.out.println(boardList);
+        System.out.println();
+        System.out.println(boardDTOList);
         return boardDTOList;
     }
 

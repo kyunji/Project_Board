@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -18,10 +19,11 @@ public class BoardDTO {
     private String title;
     @NotBlank
     private String content;
+    @NotBlank
     private String id;
-    private boolean delete_chk;
-    private LocalDateTime insert_time;
-    private LocalDateTime delete_time;
+    private boolean deleteChk;
+    private LocalDateTime insertTime;
+    private LocalDateTime deleteTime;
 
     @Override
     public String toString() {
@@ -30,9 +32,9 @@ public class BoardDTO {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", id='" + id + '\'' +
-                ", delete_chk=" + delete_chk +
-                ", insert_time=" + insert_time +
-                ", delete_time=" + delete_time +
+                ", delete_chk=" + deleteChk +
+                ", insert_time=" + insertTime +
+                ", delete_time=" + deleteTime +
                 '}';
     }
 }

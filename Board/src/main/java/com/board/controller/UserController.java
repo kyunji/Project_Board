@@ -78,11 +78,12 @@ public class UserController {
     }
 
     //게시판 글 작성
-    @RequestMapping(value = "/board1", method=RequestMethod.PUT)
-    public ResponseEntity<BoardInsertResponseMessage> boardList(@Validated @RequestBody BoardDTO boardRequestDto) {
+    @RequestMapping(value = "/boardInsert", method=RequestMethod.PUT)
+    public ResponseEntity<BoardInsertResponseMessage> boardInsert(@Validated @RequestBody BoardDTO boardRequestDto) {
         try{
             boardService.insertService(boardRequestDto);
             BoardInsertResponseMessage apiResponseMessage=new BoardInsertResponseMessage("SUCCESS","Board Insert SUCCESS",boardRequestDto);
+            System.out.println(boardRequestDto.toString());
             return new ResponseEntity<BoardInsertResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
