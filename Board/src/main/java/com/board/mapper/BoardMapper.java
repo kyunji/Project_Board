@@ -10,4 +10,5 @@ import java.util.List;
 public interface BoardMapper {
     public void insertBoard(Board board);
     public List<Board> findBoard();
+    public int deleteBoard(Board board);
 }

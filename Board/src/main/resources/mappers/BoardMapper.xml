@@ -34,4 +34,12 @@
         board
     </select>
 
+    <delete id="deleteBoard" parameterType="Board">
+        DELETE
+        from
+        board
+        WHERE
+        title=#{title}
+
+    </delete>
 </mapper>

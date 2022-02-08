@@ -5,12 +5,10 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Getter
 @Setter
 @AllArgsConstructor
-public class BoardInsertResponseMessage {
+public class BoardDeleteResponseMessage {
     private String status;
     private String message;
-    private BoardDTO data;
 }

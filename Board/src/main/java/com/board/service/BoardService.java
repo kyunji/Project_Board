@@ -38,10 +38,19 @@ public class BoardService {
                 boardList.stream().map(
                         p-> modelMapper.map(p,BoardDTO.class)).collect(Collectors.toList()
                 );
-        System.out.println(boardList);
-        System.out.println();
-        System.out.println(boardDTOList);
         return boardDTOList;
+    }
+
+    public int deleteBoard(BoardDTO boardDTO){
+        Board board=Board.builder()
+                .title(boardDTO.getTitle())
+                .content(boardDTO.getContent())
+                .id(boardDTO.getId())
+                .insertTime(boardDTO.getInsertTime())
+                .deleteTime(boardDTO.getDeleteTime())
+                .build();
+        return boardMapper.deleteBoard(board);
+
     }
 
 }
