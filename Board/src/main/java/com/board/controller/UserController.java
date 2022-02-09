@@ -11,12 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
 
+import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.List;
-
-
-
 
 //vue 포트
 @CrossOrigin(origins="http://localhost:8081")
@@ -33,19 +32,15 @@ public class UserController {
      @RequestMapping(value = "/")
     public void home(){
         System.out.println("home");
-        //return "home";
     }
 
     //회원가입   원래는 /signup
     @RequestMapping(value = "/signup", method=RequestMethod.PUT)
     public ResponseEntity<UserResponseMessage> signup(@Validated @RequestBody UserDTO userRequestDto){
-        //1.27
-        userService.insertUser(userRequestDto);
-        //상태코드(회원가입 성공한 경우)
+         userService.insertUser(userRequestDto);
+         //상태코드(회원가입 성공한 경우)
         UserResponseMessage apiResponseMessage=new UserResponseMessage("SUCCESS","Signup SUCCESS",null);
         return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.OK);
-
-
     }
 
     //로그인
@@ -57,9 +52,9 @@ public class UserController {
             return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
+            System.out.println(e.getMessage());
             UserResponseMessage apiResponseMessage=new UserResponseMessage("FAIL","Login FAILED",null);
             return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
-
         }
     }
 
@@ -72,8 +67,8 @@ public class UserController {
             return new ResponseEntity<BoardResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
-            return null;
-
+            BoardResponseMessage apiResponseMessage=new BoardResponseMessage("FAILED","Board List FAILED",boardDTOList);
+            return new ResponseEntity<BoardResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -84,12 +79,11 @@ public class UserController {
         try{
             boardService.insertService(boardRequestDto);
             BoardInsertResponseMessage apiResponseMessage=new BoardInsertResponseMessage("SUCCESS","Board Insert SUCCESS",boardRequestDto);
-            System.out.println(boardRequestDto.toString());
             return new ResponseEntity<BoardInsertResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
-            return null;
-
+            BoardInsertResponseMessage apiResponseMessage=new BoardInsertResponseMessage("FAILED","Board Insert FAILED",boardRequestDto);
+            return new ResponseEntity<BoardInsertResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
         }
 
     }
@@ -98,13 +92,13 @@ public class UserController {
     @RequestMapping(value = "/boardDelete", method=RequestMethod.POST)
     public ResponseEntity<BoardDeleteResponseMessage> boardDelete(@Validated @RequestBody BoardDTO boardRequestDto) {
         try{
-            System.out.println(boardService.deleteBoard(boardRequestDto));
-
+            boardService.deleteBoard(boardRequestDto);
             BoardDeleteResponseMessage apiResponseMessage=new BoardDeleteResponseMessage("SUCCESS","Board Delete SUCCESS");
             return new ResponseEntity<BoardDeleteResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
-            return null;
+            BoardDeleteResponseMessage apiResponseMessage=new BoardDeleteResponseMessage("FAILED","Board Delete FAILED");
+            return new ResponseEntity<BoardDeleteResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
 
         }
 
@@ -114,15 +108,26 @@ public class UserController {
     @RequestMapping(value = "/boardUpdate", method=RequestMethod.POST)
     public ResponseEntity<BoardUpdateResponseMessage> boardUpdate(@Validated @RequestBody BoardDTO boardRequestDto) {
         try{
-            System.out.println(boardService.updateBoard(boardRequestDto));
+            boardService.updateBoard(boardRequestDto);
             BoardUpdateResponseMessage apiResponseMessage=new BoardUpdateResponseMessage("SUCCESS","Board Update SUCCESS", boardRequestDto);
             return new ResponseEntity<BoardUpdateResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
-            return null;
-
+            BoardUpdateResponseMessage apiResponseMessage=new BoardUpdateResponseMessage("FAILED","Board Update FAILED", boardRequestDto);
+            return new ResponseEntity<BoardUpdateResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
         }
 
+    }
+    @ExceptionHandler(value= SQLIntegrityConstraintViolationException.class)
+    public ResponseEntity<UserResponseMessage> SQLIntegrityConstraintViolationExceptionHandler(SQLIntegrityConstraintViolationException e) {
+         System.out.println(e.getMessage());
+        UserResponseMessage apiResponseMessage=new UserResponseMessage("FAILED",e.getMessage(),null);
+        return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
+    }
+    @ExceptionHandler(value = MethodArgumentNotValidException.class)
+    public ResponseEntity<UserResponseMessage> MethodArgumentNotValidExceptionHandler(MethodArgumentNotValidException e) {
+        UserResponseMessage apiResponseMessage=new UserResponseMessage("FAILED",e.getBindingResult().getAllErrors().get(0).getDefaultMessage(),null);
+        return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
     }
 
 
