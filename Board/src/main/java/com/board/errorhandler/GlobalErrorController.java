@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.sql.SQLException;
 
-@RestControllerAdvice
+//@RestControllerAdvice
 
 public class GlobalErrorController {
 

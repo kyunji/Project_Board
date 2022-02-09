@@ -57,7 +57,8 @@ public class UserController {
             return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
-            return null;
+            UserResponseMessage apiResponseMessage=new UserResponseMessage("FAIL","Login FAILED",null);
+            return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
 
         }
     }

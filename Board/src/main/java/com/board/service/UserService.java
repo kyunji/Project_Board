@@ -27,12 +27,6 @@ public class UserService {
                 .build();
         return userMapper.insertUser(user);
     }
-    //회원 중복 체크
-    /* public void duplicatedUser(UserDTO user){
-        if(userMapper.findUser(user.getId())!=null)
-            throw new IllegalStateException("이미 존재합니다");
-
-    }*/
 
     //회원 등록
     public User login(UserDTO requestDto){
