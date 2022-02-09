@@ -79,6 +79,10 @@ public class UserController {
         try{
             boardService.insertService(boardRequestDto);
             BoardInsertResponseMessage apiResponseMessage=new BoardInsertResponseMessage("SUCCESS","Board Insert SUCCESS",boardRequestDto);
+
+            String[] content=boardRequestDto.getContent().split("\\s");
+            System.out.println(content);
+
             return new ResponseEntity<BoardInsertResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
@@ -120,7 +124,6 @@ public class UserController {
     }
     @ExceptionHandler(value= SQLIntegrityConstraintViolationException.class)
     public ResponseEntity<UserResponseMessage> SQLIntegrityConstraintViolationExceptionHandler(SQLIntegrityConstraintViolationException e) {
-         System.out.println(e.getMessage());
         UserResponseMessage apiResponseMessage=new UserResponseMessage("FAILED",e.getMessage(),null);
         return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
     }
