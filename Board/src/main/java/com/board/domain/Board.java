@@ -8,7 +8,6 @@ import java.time.LocalDateTime;
 @Getter
 @Setter
 @RequiredArgsConstructor
-@AllArgsConstructor
 public class Board {
     private Long idx;
     private String title;
@@ -19,7 +18,8 @@ public class Board {
     private LocalDateTime deleteTime;
 
     @Builder
-    public Board(String title, String content, String id, boolean deleteChk, LocalDateTime insertTime, LocalDateTime deleteTime){
+    public Board(Long idx, String title, String content, String id, boolean deleteChk, LocalDateTime insertTime, LocalDateTime deleteTime){
+        this.idx=idx;
         this.title=title;
         this.content=content;
         this.id=id;

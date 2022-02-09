@@ -1,9 +1,6 @@
 package com.board.controller;
 
-import com.board.api.BoardDeleteResponseMessage;
-import com.board.api.BoardInsertResponseMessage;
-import com.board.api.BoardResponseMessage;
-import com.board.api.UserResponseMessage;
+import com.board.api.*;
 import com.board.domain.Board;
 import com.board.domain.User;
 import com.board.dto.BoardDTO;
@@ -102,6 +99,21 @@ public class UserController {
 
             BoardDeleteResponseMessage apiResponseMessage=new BoardDeleteResponseMessage("SUCCESS","Board Delete SUCCESS");
             return new ResponseEntity<BoardDeleteResponseMessage>(apiResponseMessage, HttpStatus.OK);
+        }
+        catch (Exception e) {
+            return null;
+
+        }
+
+    }
+
+    //게시판 글 수정
+    @RequestMapping(value = "/boardUpdate", method=RequestMethod.POST)
+    public ResponseEntity<BoardUpdateResponseMessage> boardUpdate(@Validated @RequestBody BoardDTO boardRequestDto) {
+        try{
+            System.out.println(boardService.updateBoard(boardRequestDto));
+            BoardUpdateResponseMessage apiResponseMessage=new BoardUpdateResponseMessage("SUCCESS","Board Update SUCCESS", boardRequestDto);
+            return new ResponseEntity<BoardUpdateResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
             return null;

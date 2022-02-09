@@ -53,4 +53,17 @@ public class BoardService {
 
     }
 
+    public int updateBoard(BoardDTO boardDTO){
+        Board board=Board.builder()
+                .idx(boardDTO.getIdx())
+                .title(boardDTO.getTitle())
+                .content(boardDTO.getContent())
+                .id(boardDTO.getId())
+                .insertTime(boardDTO.getInsertTime())
+                .deleteTime(boardDTO.getDeleteTime())
+                .build();
+        return boardMapper.updateBoard(board);
+
+    }
+
 }
