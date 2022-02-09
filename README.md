@@ -37,14 +37,14 @@ main/java <br/>
 5. service <br/>
 5-1. UserService.java : 회원가입(db insert)
 5-2. BoardService.java : 게시판 글 작성(db insert)
-6. api <br />
-6-1. ApiResponseMessage: spring -> vue로 상태코드 전송할 때 사용하는 객체
-6-2. BoardResponseMessage: spring -> vue로 board 관련 데이터 전송할 때 사용하는 객체
+6. api <br/>
+6-1. ApiResponseMessage: spring -> vue로 상태코드 전송할 때 사용하는 객체 <br/>
+6-2. BoardResponseMessage: spring -> vue로 board 관련 데이터 전송할 때 사용하는 객체 <br/>
 6-3. BoardInsertResponseMessage:
 6-4. BoardDeleteResponseMessage:
-7. domain <br />
-7-1. user: user domain
-7-2. board: board domain
+7. domain <br/>
+7-1. user: user domain <br/>
+7-2. board: board domain <br/>
 
 src/main/resources  <br/>
 1. mappers
