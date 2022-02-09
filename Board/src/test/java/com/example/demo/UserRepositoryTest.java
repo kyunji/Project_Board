@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.board.domain.User;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -20,9 +21,9 @@ class UserRepositoryTest {
     	User user=new User();
     	user.setEmail("david@fastcampus.com");
     	user.setName("david");
-        userRepository.save(user);
+//        userRepository.save(user);
         //userRepository.flush();
-        System.out.println(userRepository.findAll());
+//        System.out.println(userRepository.findAll());
 
     }
 }

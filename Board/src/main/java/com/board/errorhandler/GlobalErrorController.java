@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 import java.sql.SQLException;
 
 @RestControllerAdvice
+
 public class GlobalErrorController {
 
     @ExceptionHandler(value= SQLException.class)

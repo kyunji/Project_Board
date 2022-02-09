@@ -17,7 +17,7 @@
     <!-- parameterType: 쿼리 실행에 필요한 parameter 타입 지정
          resultType: 쿼리 실행 결과를 매핑할 타입
          #{}: 전달받은 parameter 값-->
-    <insert id="insertUser" parameterType="UserDTO">
+    <insert id="insertUser" parameterType="User">
         INSERT INTO users (
         <include refid="userColumns" />
         ) VALUES (
@@ -30,7 +30,7 @@
         )
     </insert>
 
-    <select id="duplicatedUser" parameterType="String" resultType="UserDTO">
+    <select id="duplicatedUser" parameterType="String" resultType="User">
         SELECT
         <include refid="userColumns" />
         FROM
@@ -39,7 +39,7 @@
         id = #{id}
     </select>
 
-    <select id="findUser" parameterType="UserDTO" resultType="UserDTO">
+    <select id="findUser" parameterType="User" resultType="User">
         SELECT
         <include refid="userColumns" />
         FROM

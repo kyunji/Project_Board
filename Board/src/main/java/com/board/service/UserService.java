@@ -1,11 +1,10 @@
 package com.board.service;
 
-import com.board.domain.UserDTO;
+import com.board.domain.User;
+import com.board.dto.UserDTO;
 import com.board.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import static java.time.LocalDateTime.now;
 
 //회원 등록
 @Service
@@ -18,11 +17,15 @@ public class UserService {
     }
 
     //회원 등록
-    public int insertUser(UserDTO requestDto){
-        if(userMapper.insertUser(requestDto))
-            return 1;
-        else
-            return 0;
+    public boolean insertUser(UserDTO requestDto){
+        //DTO->domain
+        User user = User.builder()
+                .id(requestDto.getId())
+                .name(requestDto.getName())
+                .email(requestDto.getEmail())
+                .password(requestDto.getPassword())
+                .build();
+        return userMapper.insertUser(user);
     }
     //회원 중복 체크
     /* public void duplicatedUser(UserDTO user){
@@ -32,12 +35,21 @@ public class UserService {
     }*/
 
     //회원 등록
-    public int login(UserDTO requestDto){
+    public User login(UserDTO requestDto){
+        User user = User.builder()
+                .id(requestDto.getId())
+                .name(requestDto.getName())
+                .email(requestDto.getEmail())
+                .password(requestDto.getPassword())
+                .build();
+
         //login 성공
-        if(userMapper.findUser(requestDto)!=null)
-            return 1;
+        if(userMapper.findUser(user)!=null){
+            User responseUser=userMapper.findUser(user);
+            return responseUser;
+        }
         // 실패
         else
-            return 0;
+            return null;
     }
 }
