@@ -1,12 +1,12 @@
 # Board_Project
 
 ## 회원관리
-### DB Table(user_table)
+### DB Table(users)
 1. idx
-2. userid
-3. userpassword
-4. username
-5. useremail
+2. id
+3. password
+4. name
+5. email
 6. signup_time
 
  
@@ -16,7 +16,7 @@
 1. idx
 2. title
 3. content
-4. writer
+4. id(writer)
 5. delete_chk(0: not deleted, 1: deleted)
 6. insert_time(현재 시각)
 7. delete_time
@@ -39,6 +39,12 @@ main/java <br/>
 5-2. BoardService.java : 게시판 글 작성(db insert)
 6. api <br />
 6-1. ApiResponseMessage: spring -> vue로 상태코드 전송할 때 사용하는 객체
+6-2. BoardResponseMessage: spring -> vue로 board 관련 데이터 전송할 때 사용하는 객체
+6-3. BoardInsertResponseMessage:
+6-4. BoardDeleteResponseMessage:
+7. domain <br />
+7-1. user: user domain
+7-2. board: board domain
 
 src/main/resources  <br/>
 1. mappers
@@ -50,5 +56,4 @@ src/main/resources  <br/>
 1. / : home
 2. /signup: 회원가입 페이지
 3. /login : login 페이지
-4. /user : user만 접근할 수 있는 페이지 (로그인 성공)
-5. /board : 게시판 첫 화면
+4. /board : 게시판 첫 화면(게시글 목록)
