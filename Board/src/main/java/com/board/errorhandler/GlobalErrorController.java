@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 //@RestControllerAdvice
 
-public class GlobalErrorController {
+/* public class GlobalErrorController {
 
     @ExceptionHandler(value= SQLException.class)
     public ResponseEntity sqlException(Exception e){
@@ -18,7 +18,7 @@ public class GlobalErrorController {
         /* if(e.getClass().getName().equals("org.springframework.dao.DuplicateKeyException"))
             System.out.println(e.getClass().getName());
         else
-            System.out.println(e.getClass().getName()); */
+            System.out.println(e.getClass().getName());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("DuplicateKeyException");
 
@@ -33,4 +33,4 @@ public class GlobalErrorController {
     }
 
 
-}
+}*/

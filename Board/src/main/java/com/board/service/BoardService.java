@@ -43,6 +43,7 @@ public class BoardService {
 
     public int deleteBoard(BoardDTO boardDTO){
         Board board=Board.builder()
+                .idx(boardDTO.getIdx())
                 .title(boardDTO.getTitle())
                 .content(boardDTO.getContent())
                 .id(boardDTO.getId())

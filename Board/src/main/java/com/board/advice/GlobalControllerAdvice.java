@@ -1,6 +1,6 @@
 package com.board.advice;
 
-import org.springframework.http.HttpStatus;
+/* import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -17,7 +17,7 @@ public class GlobalControllerAdvice {
         /* if(e.getClass().getName().equals("org.springframework.dao.DuplicateKeyException"))
             System.out.println(e.getClass().getName());
         else
-            System.out.println(e.getClass().getName()); */
+            System.out.println(e.getClass().getName());
 
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("DuplicateKeyException");
 
@@ -32,4 +32,4 @@ public class GlobalControllerAdvice {
     }
 
 
-}
+} */
