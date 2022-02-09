@@ -16,10 +16,10 @@ import static java.time.LocalTime.now;
 public class User {
     private Long idx;
     @NotBlank
-    @Size(min=1, max = 20)
+    @Size(min=6, max = 20)
     private String id;
     @NotBlank
-    @Size(min=1, max = 20)
+    @Size(min=6, max = 20)
     private String password;//카멜케이스
     @NotBlank
     private String name;
