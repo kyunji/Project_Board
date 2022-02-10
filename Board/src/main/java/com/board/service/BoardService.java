@@ -25,7 +25,6 @@ public class BoardService {
                 .content(boardDTO.getContent())
                 .id(boardDTO.getId())
                 .insertTime(boardDTO.getInsertTime())
-                .deleteTime(boardDTO.getDeleteTime())
                 .build();
         boardMapper.insertBoard(board);
     };
@@ -48,7 +47,6 @@ public class BoardService {
                 .content(boardDTO.getContent())
                 .id(boardDTO.getId())
                 .insertTime(boardDTO.getInsertTime())
-                .deleteTime(boardDTO.getDeleteTime())
                 .build();
         return boardMapper.deleteBoard(board);
 
@@ -61,7 +59,6 @@ public class BoardService {
                 .content(boardDTO.getContent())
                 .id(boardDTO.getId())
                 .insertTime(boardDTO.getInsertTime())
-                .deleteTime(boardDTO.getDeleteTime())
                 .build();
         return boardMapper.updateBoard(board);
 

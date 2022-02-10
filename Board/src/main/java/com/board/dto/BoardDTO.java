@@ -21,9 +21,7 @@ public class BoardDTO {
     private String content;
     @NotBlank
     private String id;
-    private boolean deleteChk;
     private LocalDateTime insertTime;
-    private LocalDateTime deleteTime;
 
     @Override
     public String toString() {
@@ -32,9 +30,7 @@ public class BoardDTO {
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
                 ", id='" + id + '\'' +
-                ", delete_chk=" + deleteChk +
                 ", insert_time=" + insertTime +
-                ", delete_time=" + deleteTime +
                 '}';
     }
 }

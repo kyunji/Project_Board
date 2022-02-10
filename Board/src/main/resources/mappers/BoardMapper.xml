@@ -8,9 +8,7 @@
         title,
         content,
         id,
-        delete_chk,
-        insert_time,
-        delete_time
+        insert_time
     </sql>
 
     <insert id="insertBoard" parameterType="Board">
@@ -21,9 +19,7 @@
         , #{title}
         , #{content}
         , #{id}
-        , 0
         , NOW()
-        , null
         )
     </insert>
 
