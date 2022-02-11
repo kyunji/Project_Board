@@ -20,36 +20,66 @@
 5. insert_time(DATETIME, NN)
 
 ## 프로젝트 구성
-main/java <br/>
-
-1. controller <br/>
-1-1. UserController.java <br/>
-2. domain <br/>
-2-1. UserDTO.java  <br/>
-2-2. BoardDTO.java <br/>
-3. mapper <br/>
-3-1. UserMapper.java (I) <br/>
-3-2. BoardMapper.java (I) <br/>
-4. configuration <br/>
-4-1. DBConfiguration.java <br/>
-5. service <br/>
-5-1. UserService.java : 회원가입(db insert)
-5-2. BoardService.java : 게시판 글 작성(db insert)
-6. api <br/>
-6-1. ApiResponseMessage: spring -> vue로 상태코드 전송할 때 사용하는 객체 <br/>
-6-2. BoardResponseMessage: spring -> vue로 board 관련 데이터 전송할 때 사용하는 객체 <br/>
-6-3. BoardInsertResponseMessage:
-6-4. BoardDeleteResponseMessage:
-7. domain <br/>
-7-1. user: user domain <br/>
-7-2. board: board domain <br/>
-
-src/main/resources  <br/>
-1. mappers
-1-1. UserMapper.xml : sql 쿼리
-1-2. BoardMapper.xml : sql 쿼리
-
-
+📦Board <br />
+ ┣ 📂.gradle <br />
+ ┣ 📂.idea <br />
+ ┣ 📂.settings <br />
+ ┣ 📂build <br />
+ ┣ 📂gradle <br />
+ ┣ 📂src <br />
+ ┃ ┣ 📂.idea <br />
+ ┃ ┣ 📂main <br />
+ ┃ ┃ ┣ 📂java <br />
+ ┃ ┃ ┃ ┗ 📂com <br />
+ ┃ ┃ ┃ ┃ ┗ 📂board <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂api <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardDeleteResponseMessage.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardInsertResponseMessage.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardResponseMessage.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardUpdateResponseMessage.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserResponseMessage.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂configuration <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DBConfiguration.java  <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂controller <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂domain <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Board.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜User.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂dto <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardDTO.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserDTO.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂errorhandler <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜GlobalErrorController.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂mapper <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardMapper.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserMapper.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┣ 📂service <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜BoardService.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserService.java <br />
+ ┃ ┃ ┃ ┃ ┃ ┗ 📜BoardApplication.java <br />
+ ┃ ┃ ┣ 📂resources <br />
+ ┃ ┃ ┃ ┣ 📂mappers <br />
+ ┃ ┃ ┃ ┃ ┣ 📜BoardMapper.xml <br />
+ ┃ ┃ ┃ ┃ ┗ 📜UserMapper.xml <br />
+ ┃ ┃ ┃ ┣ 📂static <br />
+ ┃ ┃ ┃ ┃ ┣ 📂js <br />
+ ┃ ┃ ┃ ┣ 📂templates <br />
+ ┃ ┃ ┃ ┣ 📜application.properties <br />
+ ┃ ┃ ┃ ┗ 📜mybatis-config.xml <br />
+ ┃ ┃ ┗ 📜main.iml <br />
+ ┣ 📜.classpath <br />
+ ┣ 📜.gitignore <br />
+ ┣ 📜.project <br />
+ ┣ 📜Board.iml <br />
+ ┣ 📜build.gradle <br />
+ ┣ 📜gradlew <br />
+ ┣ 📜gradlew.bat <br />
+ ┣ 📜HELP.md <br />
+ ┣ 📜package-lock.json <br />
+ ┣ 📜package.json <br />
+ ┗ 📜settings.gradle <br />
+ 
+ 
 ## 페이지 구성(vue)
 1. / : home
 2. /signup: 회원가입 페이지
