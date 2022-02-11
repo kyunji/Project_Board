@@ -117,5 +117,10 @@
 ## 프로젝트 실행 방법
 ```
 cd Board
-./gradlew bootRun
+
+gradlew bootRun //Window
+./gradlew bootRun //Mac OS
+
+cd /build/libs
+java -jar Board-spring-0.0.1-SNAPSHOT.jar
 ```
