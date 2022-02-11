@@ -1,4 +1,4 @@
-# Board_Project
+# Board_Project :orange_book: :green_book:
 
 ## 프로젝트 소개
 - 1인으로 약 1달동안 진행한 토이 프로젝트입니다.
