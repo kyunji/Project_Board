@@ -20,6 +20,7 @@ public class BoardService {
     }
 
     public void insertService(BoardDTO boardDTO){
+        //DTO->domain
         Board board=Board.builder()
                 .title(boardDTO.getTitle())
                 .content(boardDTO.getContent())
@@ -31,7 +32,7 @@ public class BoardService {
 
     public List<BoardDTO> findBoard(){
         ModelMapper modelMapper=new ModelMapper();
-
+        //domain->DTO
         List<Board> boardList= boardMapper.findBoard();
         List<BoardDTO> boardDTOList=
                 boardList.stream().map(
