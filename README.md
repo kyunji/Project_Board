@@ -113,7 +113,7 @@
 4. id(writer/ VARCHAR(20), NN): 게시글을 작성한 사람의 아이디
 5. insert_time(DATETIME, NN): 게시글 작성 날짜 및 
 
-## 프로젝트 실행 방법
+## 프로젝트 실행 방법(Terminal)
 ```
 cd Board
 
