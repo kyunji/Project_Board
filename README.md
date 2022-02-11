@@ -7,11 +7,13 @@
 
 2. Front-end
 - Vue.js 
-- Vuetify 
+- Vuetify 2.4.0
+- Vue-router 3.5.3
+- Vuex 3.6.2
 - @vue/cli 4.5.15 
 
 3. Database
-- MySQL 
+- MySQL Ver 8.0.27 for Win64 on x86_64
 - Mybatis 
 
 4. Development Tools
@@ -112,3 +114,8 @@
 4. id(writer/ VARCHAR(20), NN): 게시글을 작성한 사람의 아이디
 5. insert_time(DATETIME, NN): 게시글 작성 날짜 및 
 
+## 프로젝트 실행 방법
+```
+cd Board
+./gradlew bootRun
+```
