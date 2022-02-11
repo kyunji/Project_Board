@@ -1,6 +1,6 @@
 package com.board.api;
 
-import com.board.domain.User;
+import com.board.dto.UserDTO;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,6 +12,6 @@ import lombok.Setter;
 public class UserResponseMessage {
     private String status;
     private String message;
-    private User data;
+    private UserDTO data;
 
 }

@@ -27,6 +27,7 @@ public class UserDTO {
     private String email;
     private LocalDateTime signupTime;
 
+
     @Override
     public String toString() {
         return "UserDTO{" +

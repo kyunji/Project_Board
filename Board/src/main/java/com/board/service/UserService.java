@@ -1,10 +1,16 @@
 package com.board.service;
 
+import com.board.domain.Board;
 import com.board.domain.User;
+import com.board.dto.BoardDTO;
 import com.board.dto.UserDTO;
 import com.board.mapper.UserMapper;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 //회원 등록
 @Service
@@ -28,22 +34,20 @@ public class UserService {
         return userMapper.insertUser(user);
     }
 
-    //회원 등록
-    public User login(UserDTO requestDto){
+    public UserDTO login(UserDTO requestDto) {
+
+        // DTO->domain
         User user = User.builder()
                 .id(requestDto.getId())
                 .name(requestDto.getName())
                 .email(requestDto.getEmail())
                 .password(requestDto.getPassword())
                 .build();
+        User responseUser = userMapper.findUser(user);
 
-        //login 성공
-        if(userMapper.findUser(user)!=null){
-            User responseUser=userMapper.findUser(user);
-            return responseUser;
-        }
-        // 실패
-        else
-            return null;
+        UserDTO userDTO=new UserDTO(responseUser.getIdx(),responseUser.getId(), responseUser.getPassword(),
+                responseUser.getName(), responseUser.getEmail(),responseUser.getSignupTime());
+
+        return userDTO;
     }
 }

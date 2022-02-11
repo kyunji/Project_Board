@@ -20,7 +20,6 @@ import java.util.List;
 //vue 포트
 @CrossOrigin(origins="http://localhost:8081")
 @RestController // JSON 형태의 객체 return
-
 //@NoArgsConstructor //생성자 주입 방법
 public class UserController {
     @Autowired //필드주입
@@ -47,12 +46,11 @@ public class UserController {
     @RequestMapping(value = "/login", method=RequestMethod.POST)
     public ResponseEntity<UserResponseMessage> login(@Validated @RequestBody UserDTO userRequestDto){
         try{
-            User responseUser=userService.login(userRequestDto);
+            UserDTO responseUser=userService.login(userRequestDto);
             UserResponseMessage apiResponseMessage=new UserResponseMessage("SUCCESS","Login SUCCESS",responseUser);
             return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.OK);
         }
         catch (Exception e) {
-            System.out.println(e.getMessage());
             UserResponseMessage apiResponseMessage=new UserResponseMessage("FAIL","Login FAILED",null);
             return new ResponseEntity<UserResponseMessage>(apiResponseMessage, HttpStatus.BAD_REQUEST);
         }

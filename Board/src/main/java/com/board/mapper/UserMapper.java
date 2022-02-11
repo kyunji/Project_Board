@@ -1,5 +1,6 @@
 package com.board.mapper;
 
+import com.board.dto.UserDTO;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.board.domain.User;
