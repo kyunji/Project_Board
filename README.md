@@ -60,6 +60,7 @@
  ┃ ┃ ┃ ┃ ┃ ┣ 📂configuration <br />
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜DBConfiguration.java  <br />
  ┃ ┃ ┃ ┃ ┃ ┣ 📂controller <br />
+ ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜BoardController.java <br />
  ┃ ┃ ┃ ┃ ┃ ┃ ┗ 📜UserController.java <br />
  ┃ ┃ ┃ ┃ ┃ ┣ 📂domain <br />
  ┃ ┃ ┃ ┃ ┃ ┃ ┣ 📜Board.java <br />
